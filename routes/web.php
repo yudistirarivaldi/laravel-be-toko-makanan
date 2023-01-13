@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\MidtransController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,19 +15,16 @@ use App\Http\Controllers\API\MidtransController;
 |
 */
 
+// homepage
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('dashboard');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+// dashboard
+Route::prefix('dashboard')->middleware(['auth:sanctum', 'admin'])->group(function() {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 });
+
 
 // Midtrang page
 Route::get('midtrans/success', [MidtransController::class, 'success']);
