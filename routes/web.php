@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\MidtransController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -23,6 +24,7 @@ Route::get('/', function () {
 // dashboard
 Route::prefix('dashboard')->middleware(['auth:sanctum', 'admin'])->group(function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('users', UsersController::class);
 });
 
 
