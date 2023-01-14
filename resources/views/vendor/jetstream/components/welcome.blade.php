@@ -15,7 +15,7 @@
 
     <div class="p-6 border-t border-gray-200">
         <div class="flex items-center">
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="#">Users</a>
+            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="{{ route('users.index') }}">Users</a>
             </div>
         </div>
     </div>
