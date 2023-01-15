@@ -37,7 +37,7 @@
                                             class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">Edit
                                         </a>
 
-                                        <form action="{{ route('users.destroy', $item->id) }}" method="POST"
+                                        <form action="{{ route('food.destroy', $item->id) }}" method="POST"
                                             class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
                                             <button type="submit"
