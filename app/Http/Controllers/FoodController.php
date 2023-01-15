@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
+use App\Models\Food;
 use Illuminate\Http\Request;
-use App\Models\User;
 
-class UsersController extends Controller
+class FoodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +14,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = User::paginate(10);
+        $food = Food::paginate(10);
 
-        return view('users.index', [
-            'user' => $user
+        return view('food.index',[
+            'food' => $food
         ]);
-
     }
 
     /**
@@ -30,7 +28,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        //
     }
 
     /**
@@ -39,15 +37,9 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
-
-        $data['profile_photo_path'] = $request->file('profile_photo_path')->store('assets/user', 'public');
-
-        User::create($data);
-
-        return redirect()->route('users.index');
+        //
     }
 
     /**
@@ -67,11 +59,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        return view('users.edit', [
-            'item' => $user
-        ]);
+        //
     }
 
     /**
@@ -81,18 +71,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $user)
+    public function update(Request $request, $id)
     {
-        $data = $request->all();
-
-        if($request->file('profile_picture_path'))
-        {
-            $data['profile_photo_path'] = $request->file('profile_photo_path')->store('assets/user', 'public');
-        }
-
-        $user->update($data);
-
-        return redirect()->route('users.index');
+        //
     }
 
     /**
@@ -101,10 +82,8 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
-
-        return redirect()->route('users.index');
+        //
     }
 }
