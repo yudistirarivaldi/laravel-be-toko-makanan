@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('food.index') }}" :active="request()->routeIs('food.index')">
+                    <x-jet-nav-link href="{{ route('transaction.index') }}" :active="request()->routeIs('transaction.index')">
                         {{ __('Transaction') }}
                     </x-jet-nav-link>
                 </div>

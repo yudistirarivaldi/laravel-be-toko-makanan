@@ -5,6 +5,7 @@ use App\Http\Controllers\API\MidtransController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,10 @@ Route::prefix('dashboard')->middleware(['auth:sanctum', 'admin'])->group(functio
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('users', UsersController::class);
     Route::resource('food', FoodController::class);
+
+    // update status transaction
+    Route::get('tranasctions/{id}/status/{status} ', [TransactionController::class, 'changeStatus'])->name('transaction.changeStatus');
+    Route::resource('transaction', TransactionController::class);
 });
 
 
